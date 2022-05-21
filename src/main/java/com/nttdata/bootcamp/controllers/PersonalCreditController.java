@@ -42,7 +42,7 @@ public class PersonalCreditController {
 		return pcrepo.findById(personalCredit.getId()).flatMap(c->{
 			c.setAccountingBalance(personalCredit.getAccountingBalance());
 			log.info("a PersonalCredit was updated");
-			return Mono.just(c);
+			return pcrepo.save(c);
 		});
 	}
 	
