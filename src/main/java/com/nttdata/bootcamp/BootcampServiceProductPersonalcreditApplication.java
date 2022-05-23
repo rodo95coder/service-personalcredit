@@ -5,7 +5,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
-import org.springframework.stereotype.Service;
 
 import com.nttdata.bootcamp.models.PersonalCredit;
 import com.nttdata.bootcamp.repositories.IPersonalCreditRepo;
