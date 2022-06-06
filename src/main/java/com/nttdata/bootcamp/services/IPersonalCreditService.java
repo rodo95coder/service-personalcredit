@@ -10,4 +10,5 @@ public interface IPersonalCreditService {
 	public Mono<PersonalCredit> findById(String id);
 	public Mono<PersonalCredit> save(PersonalCredit personalCredit);
 	public Mono<Void> delete(PersonalCredit personalCredit);
+	public Mono<PersonalCredit> findByIdCustomerPerson(String idCustomerPerson);
 }

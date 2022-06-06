@@ -15,7 +15,7 @@ public class PersonalCreditImpl implements IPersonalCreditService {
 	
 	@Autowired
 	IPersonalCreditRepo pcrepo;
-	
+
 	@Override
 	public Flux<PersonalCredit> findAll() {
 		return pcrepo.findAll();
@@ -27,14 +27,18 @@ public class PersonalCreditImpl implements IPersonalCreditService {
 	}
 
 	@Override
+	public Mono<PersonalCredit> save(PersonalCredit personalCredit) {
+		return pcrepo.save(personalCredit);
+	}
+
+	@Override
 	public Mono<Void> delete(PersonalCredit personalCredit) {
 		return pcrepo.delete(personalCredit);
 	}
 
 	@Override
-	public Mono<PersonalCredit> save(PersonalCredit personalCredit) {
-		// TODO Auto-generated method stub
-		return pcrepo.save(personalCredit);
+	public Mono<PersonalCredit> findByIdCustomerPerson(String idCustomerPerson) {
+		return pcrepo.findByIdCustomerPerson(idCustomerPerson);
 	}
 
 }

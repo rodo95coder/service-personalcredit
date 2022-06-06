@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.stereotype.Service;
 
 import com.nttdata.bootcamp.models.PersonalCredit;
 import com.nttdata.bootcamp.repositories.IPersonalCreditRepo;
@@ -12,6 +14,7 @@ import com.nttdata.bootcamp.repositories.IPersonalCreditRepo;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
+@EnableEurekaClient
 @Slf4j
 @SpringBootApplication
 public class BootcampServiceProductPersonalcreditApplication implements CommandLineRunner{
@@ -28,13 +31,15 @@ public class BootcampServiceProductPersonalcreditApplication implements CommandL
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
+		
 		mongoTemplate.dropCollection("personalcredits").subscribe();
 		
 		Flux.just(PersonalCredit.builder()
 				.idCustomerPerson("b1")
-				.accountingBalance("100")
-				.availableBalance("2")
+				.accountingBalance("700")
+				.availableBalance("100")
+				.debt("600")
+				.numMovement(0)
 				.build()).flatMap(bs->{
 						return pcrepo.save(bs);
 				}).subscribe(s-> log.info("Se ingreso personalCredit: "+s));
